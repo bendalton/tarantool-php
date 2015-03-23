@@ -2,10 +2,12 @@
 class MsgPackTest extends PHPUnit_Framework_TestCase
 {
     protected static $tarantool;
+    protected static $uri;
 
     public static function setUpBeforeClass()
     {
-        self::$tarantool = new Tarantool('localhost', getenv('PRIMARY_PORT'));
+        self::$uri = sprintf('tcp://%s:%s', 'localhost', getenv('PRIMARY_PORT'));
+        self::$tarantool = new Tarantool(self::$uri);
         self::$tarantool->authenticate('test', 'test');
     }
 
@@ -55,9 +57,7 @@ class MsgPackTest extends PHPUnit_Framework_TestCase
         );
         $resp = self::$tarantool->select("msgpack", array(5));
         $this->assertEquals($resp[0][2]['lol'], 'lal');
-        $this->assertTrue(True);
         $resp = self::$tarantool->select("msgpack", array(6));
         $this->assertEquals($resp[0][2]['megusta'], array(1, 2, 3));
-        $this->assertTrue(True);
     }
 }

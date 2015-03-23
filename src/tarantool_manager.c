@@ -31,9 +31,9 @@ char *tarantool_tostr (
 		struct pool_manager *pool
 ) {
 	char *login = obj->login ? obj->login : "";
-	char *fmt = (!pool->deauthorize ? "%s:%d:%s" : "%s:%d:");
+	char *fmt = (!pool->deauthorize ? "%s:%s" : "%s:");
 	char *retval = pecalloc(256, sizeof(char), 1);
-	snprintf(retval, 256, fmt, obj->host, obj->port, login);
+	snprintf(retval, 256, fmt, obj->uri, login);
 	return retval;
 }
 

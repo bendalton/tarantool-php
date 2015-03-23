@@ -1,5 +1,5 @@
-#ifndef   PHP_MANAGER_H
-#define   PHP_MANAGER_H
+#ifndef   PHP_TARANTOOL_MANAGER_H
+#define   PHP_TARANTOOL_MANAGER_H
 
 #include <php.h>
 #include <php_network.h>
@@ -44,4 +44,4 @@ int                  pool_manager_free   (struct pool_manager *);
 int pool_manager_find_apply  (struct pool_manager *, struct tarantool_object *);
 int pool_manager_push_assure (struct pool_manager *, struct tarantool_object *);
 
-#endif /* PHP_MANAGER_H */
+#endif /* PHP_TARANTOOL_MANAGER_H */

@@ -2,10 +2,12 @@
 class DMLTest extends PHPUnit_Framework_TestCase
 {
     protected static $tarantool;
+    protected static $uri;
 
     public static function setUpBeforeClass()
     {
-        self::$tarantool = new Tarantool('localhost', getenv('PRIMARY_PORT'));
+        self::$uri = sprintf('tcp://%s:%s', 'localhost', getenv('PRIMARY_PORT'));
+        self::$tarantool = new Tarantool(self::$uri);
         self::$tarantool->authenticate('test', 'test');
     }
 

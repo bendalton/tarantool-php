@@ -67,8 +67,7 @@ ZEND_EXTERN_MODULE_GLOBALS(tarantool)
 
 typedef struct tarantool_object {
 	zend_object zo;
-	char *host;
-	int   port;
+	char *uri;
 	char *login;
 	char *passwd;
 	php_stream *stream;
